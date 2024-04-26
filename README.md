@@ -1,1 +1,1 @@
-# calculator
+In this project I'm gonna build a calculator that will be operated in the browser. This is the last project of Fundamentals in TOP, so I will be applaying everything I learned in this course, that is HTML, CSS and Javascript.
