@@ -1,6 +1,7 @@
 let firstNumber;
 let secondNumber;
 let operator;
+let operatorClicked = false;
 
 const display = document.querySelector(".display");
 const numberButtons = document.querySelectorAll("button.number");
@@ -10,12 +11,17 @@ numberButtons.forEach( (button) => button.addEventListener("click", writeDisplay
 operatorButtons.forEach( (button) =>  button.addEventListener("click", clickOperator) );
 
 function writeDisplay() {
-  display.textContent == "0" ?
-  display.textContent = this.textContent :
-  display.textContent += this.textContent;
+  if (display.textContent == "0" || operatorClicked == true) {
+    display.textContent = this.textContent;
+    operatorClicked = false;
+  }
+  else {
+    display.textContent += this.textContent;
+  }
 }
 
 function clickOperator() {
+  operatorClicked = true;
   operator = this.textContent;
   firstNumber = display.textContent;
 }
