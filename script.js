@@ -4,13 +4,20 @@ let operator;
 
 const display = document.querySelector(".display");
 const numberButtons = document.querySelectorAll("button.number");
+const operatorButtons = document.querySelectorAll("button.operator");
 
 numberButtons.forEach( (button) => button.addEventListener("click", writeDisplay) );
+operatorButtons.forEach( (button) =>  button.addEventListener("click", clickOperator) );
 
 function writeDisplay() {
   display.textContent == "0" ?
   display.textContent = this.textContent :
   display.textContent += this.textContent;
+}
+
+function clickOperator() {
+  operator = this.textContent;
+  firstNumber = display.textContent;
 }
 
 function add(a, b) {
