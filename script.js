@@ -25,17 +25,21 @@ function writeDisplay() {
 function clickOperator() {
   operatorClicked = true;
   operator = this.textContent;
-  firstNumber = Number(display.textContent);
+  firstNumber = getDisplayNumber();
 }
 
 function clickEqual() {
   if (operator != "") {
-    secondNumber = Number(display.textContent);
+    secondNumber = getDisplayNumber();
     display.textContent = operate(firstNumber, secondNumber, operator);
     firstNumber = "";
     secondNumber = "";
     operator = "";
   }
+}
+
+function getDisplayNumber() {
+  return Number(display.textContent);
 }
 
 function add(a, b) {
