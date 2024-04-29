@@ -23,7 +23,7 @@ function writeDisplay() {
 }
 
 function clickOperator() {
-  if (firstNumber != "" && operator != "") {
+  if (firstNumber !== "" && operator !== "") {
     if (!operatorClicked) {
       secondNumber = getDisplayNumber();
       display.textContent = operate(firstNumber, secondNumber, operator);
@@ -39,7 +39,7 @@ function clickOperator() {
 }
 
 function clickEqual() {
-  if (operator != "") {
+  if (firstNumber !== "") {
     secondNumber = getDisplayNumber();
     display.textContent = operate(firstNumber, secondNumber, operator);
     firstNumber = "";
