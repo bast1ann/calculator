@@ -1,6 +1,6 @@
-let firstNumber;
-let secondNumber;
-let operator;
+let firstNumber = "";
+let secondNumber = "";
+let operator = "";
 let operatorClicked = false;
 
 const display = document.querySelector(".display");
@@ -23,9 +23,19 @@ function writeDisplay() {
 }
 
 function clickOperator() {
+  if (firstNumber != "" && operator != "") {
+    if (!operatorClicked) {
+      secondNumber = getDisplayNumber();
+      display.textContent = operate(firstNumber, secondNumber, operator);
+      firstNumber = getDisplayNumber();
+      secondNumber = "";
+    }
+  }
+  else {
+    firstNumber = getDisplayNumber();
+  }
   operatorClicked = true;
   operator = this.textContent;
-  firstNumber = getDisplayNumber();
 }
 
 function clickEqual() {
