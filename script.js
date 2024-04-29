@@ -6,9 +6,11 @@ let operatorClicked = false;
 const display = document.querySelector(".display");
 const numberButtons = document.querySelectorAll("button.number");
 const operatorButtons = document.querySelectorAll("button.operator");
+const equalButton = document.querySelector("button.equal");
 
 numberButtons.forEach( (button) => button.addEventListener("click", writeDisplay) );
 operatorButtons.forEach( (button) =>  button.addEventListener("click", clickOperator) );
+equalButton.addEventListener("click", clickEqual);
 
 function writeDisplay() {
   if (display.textContent == "0" || operatorClicked == true) {
@@ -23,7 +25,17 @@ function writeDisplay() {
 function clickOperator() {
   operatorClicked = true;
   operator = this.textContent;
-  firstNumber = display.textContent;
+  firstNumber = Number(display.textContent);
+}
+
+function clickEqual() {
+  if (operator != "") {
+    secondNumber = Number(display.textContent);
+    display.textContent = operate(firstNumber, secondNumber, operator);
+    firstNumber = "";
+    secondNumber = "";
+    operator = "";
+  }
 }
 
 function add(a, b) {
@@ -48,7 +60,7 @@ function operate(number1, number2, operator) {
       return add(number1, number2);
     case "-":
       return subtract(number1, number2);
-    case "*":
+    case "X":
       return multiply(number1, number2);
     case "/":
       return divide(number1, number2);
