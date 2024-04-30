@@ -8,10 +8,12 @@ const display = document.querySelector(".display");
 const numberButtons = document.querySelectorAll("button.number");
 const operatorButtons = document.querySelectorAll("button.operator");
 const equalButton = document.querySelector("button.equal");
+const clearButton = document.querySelector("button.clear");
 
 numberButtons.forEach( (button) => button.addEventListener("click", writeDisplay) );
 operatorButtons.forEach( (button) =>  button.addEventListener("click", clickOperator) );
 equalButton.addEventListener("click", clickEqual);
+clearButton.addEventListener("click", clickClear);
 
 function writeDisplay() {
   if (display.textContent == "0" || operatorClicked || equalClicked) {
@@ -46,6 +48,15 @@ function clickEqual() {
     secondNumber = "";
   }
   equalClicked = true;
+}
+
+function clickClear() {
+  firstNumber = "";
+  secondNumber = "";
+  operator = "";
+  operatorClicked = false;
+  equalClicked = false;
+  display.textContent = "0";
 }
 
 function getDisplayNumber() {
