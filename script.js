@@ -85,8 +85,13 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-  const result = a / b;
-  return Math.round(result * 10000000000) / 10000000000;
+  if (b !== 0) {
+    const result = a / b;
+    return Math.round(result * 10000000000) / 10000000000;
+  }
+  else {
+    return "Error: div by 0";
+  }
 }
 
 function operate(number1, number2, operator) {
