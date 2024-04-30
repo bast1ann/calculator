@@ -22,20 +22,18 @@ signButton.addEventListener("click", clickSign);
 deleteButton.addEventListener("click", clickDelete);
 
 function writeDisplay() {
-  if (display.textContent.length != 12) {
-    if (this.textContent === ".") {
-      if (!display.textContent.includes(".") && !operatorClicked && !equalClicked) {
-        display.textContent += ".";
-      }
+  if (this.textContent === "." && display.textContent.length != 12) {
+    if (!display.textContent.includes(".") && !operatorClicked && !equalClicked) {
+      display.textContent += ".";
     }
-    else if (display.textContent == "0" || operatorClicked || equalClicked) {
-      display.textContent = this.textContent;
-      operatorClicked = false;
-      equalClicked = false;
-    }
-    else {
-      display.textContent += this.textContent;
-    }
+  }
+  else if (display.textContent == "0" || operatorClicked || equalClicked) {
+    display.textContent = this.textContent;
+    operatorClicked = false;
+    equalClicked = false;
+  }
+  else if (display.textContent.length != 12) {
+    display.textContent += this.textContent;
   }
 }
 
