@@ -20,7 +20,7 @@ decimalPointButton.addEventListener("click", writeDisplay);
 function writeDisplay() {
   if (display.textContent.length != 12) {
     if (this.textContent === ".") {
-      if (!display.textContent.includes(".")) {
+      if (!display.textContent.includes(".") && !operatorClicked && !equalClicked) {
         display.textContent += ".";
       }
     }
