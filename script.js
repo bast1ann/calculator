@@ -10,12 +10,14 @@ const operatorButtons = document.querySelectorAll("button.operator");
 const equalButton = document.querySelector("button.equal");
 const clearButton = document.querySelector("button.clear");
 const decimalPointButton = document.querySelector("button.decimal-point");
+const signButton = document.querySelector("button.sign");
 
 numberButtons.forEach( (button) => button.addEventListener("click", writeDisplay) );
 operatorButtons.forEach( (button) =>  button.addEventListener("click", clickOperator) );
 equalButton.addEventListener("click", clickEqual);
 clearButton.addEventListener("click", clickClear);
 decimalPointButton.addEventListener("click", writeDisplay);
+signButton.addEventListener("click", clickSign);
 
 function writeDisplay() {
   if (display.textContent.length != 12) {
@@ -66,6 +68,18 @@ function clickClear() {
   operatorClicked = false;
   equalClicked = false;
   display.textContent = "0";
+}
+
+function clickSign() {
+  let string = display.textContent;
+  if (string != "0") {
+    if (string.includes("-")) {
+      display.textContent = string.slice(1);
+    }
+    else {
+      display.textContent = "-" + string;
+    }
+  }
 }
 
 function getDisplayNumber() {
