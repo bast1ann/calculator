@@ -2,6 +2,7 @@ let firstNumber = "";
 let secondNumber = "";
 let operator = "";
 let operatorClicked = false;
+let equalClicked = false;
 
 const display = document.querySelector(".display");
 const numberButtons = document.querySelectorAll("button.number");
@@ -13,9 +14,10 @@ operatorButtons.forEach( (button) =>  button.addEventListener("click", clickOper
 equalButton.addEventListener("click", clickEqual);
 
 function writeDisplay() {
-  if (display.textContent == "0" || operatorClicked == true) {
+  if (display.textContent == "0" || operatorClicked || equalClicked) {
     display.textContent = this.textContent;
     operatorClicked = false;
+    equalClicked = false;
   }
   else {
     display.textContent += this.textContent;
@@ -23,29 +25,27 @@ function writeDisplay() {
 }
 
 function clickOperator() {
-  if (firstNumber !== "" && operator !== "") {
-    if (!operatorClicked) {
-      secondNumber = getDisplayNumber();
-      display.textContent = operate(firstNumber, secondNumber, operator);
-      firstNumber = getDisplayNumber();
-      secondNumber = "";
-    }
+  if (firstNumber === "" || operatorClicked) {
+    firstNumber = getDisplayNumber();
   }
   else {
+    secondNumber = getDisplayNumber();
+    display.textContent = operate(firstNumber, secondNumber, operator);
     firstNumber = getDisplayNumber();
+    secondNumber = "";
   }
   operatorClicked = true;
   operator = this.textContent;
 }
 
 function clickEqual() {
-  if (firstNumber !== "") {
+  if (firstNumber !== "" && !operatorClicked) {
     secondNumber = getDisplayNumber();
     display.textContent = operate(firstNumber, secondNumber, operator);
     firstNumber = "";
     secondNumber = "";
-    operator = "";
   }
+  equalClicked = true;
 }
 
 function getDisplayNumber() {
