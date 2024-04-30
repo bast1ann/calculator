@@ -18,18 +18,20 @@ clearButton.addEventListener("click", clickClear);
 decimalPointButton.addEventListener("click", writeDisplay);
 
 function writeDisplay() {
-  if (this.textContent === ".") {
-    if (!display.textContent.includes(".")) {
-      display.textContent += ".";
+  if (display.textContent.length != 12) {
+    if (this.textContent === ".") {
+      if (!display.textContent.includes(".")) {
+        display.textContent += ".";
+      }
     }
-  }
-  else if (display.textContent == "0" || operatorClicked || equalClicked) {
-    display.textContent = this.textContent;
-    operatorClicked = false;
-    equalClicked = false;
-  }
-  else {
-    display.textContent += this.textContent;
+    else if (display.textContent == "0" || operatorClicked || equalClicked) {
+      display.textContent = this.textContent;
+      operatorClicked = false;
+      equalClicked = false;
+    }
+    else {
+      display.textContent += this.textContent;
+    }
   }
 }
 
