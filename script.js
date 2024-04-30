@@ -11,6 +11,7 @@ const equalButton = document.querySelector("button.equal");
 const clearButton = document.querySelector("button.clear");
 const decimalPointButton = document.querySelector("button.decimal-point");
 const signButton = document.querySelector("button.sign");
+const deleteButton = document.querySelector("button.delete");
 
 numberButtons.forEach( (button) => button.addEventListener("click", writeDisplay) );
 operatorButtons.forEach( (button) =>  button.addEventListener("click", clickOperator) );
@@ -18,6 +19,7 @@ equalButton.addEventListener("click", clickEqual);
 clearButton.addEventListener("click", clickClear);
 decimalPointButton.addEventListener("click", writeDisplay);
 signButton.addEventListener("click", clickSign);
+deleteButton.addEventListener("click", clickDelete);
 
 function writeDisplay() {
   if (display.textContent.length != 12) {
@@ -78,6 +80,18 @@ function clickSign() {
     }
     else {
       display.textContent = "-" + string;
+    }
+  }
+}
+
+function clickDelete() {
+  let string = display.textContent;
+  if (string != "0") {
+    if (string.length == 1) {
+      display.textContent = "0";
+    }
+    else {
+      display.textContent = string.slice(0, -1);
     }
   }
 }
