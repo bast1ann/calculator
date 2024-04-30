@@ -114,8 +114,7 @@ function multiply(a, b) {
 
 function divide(a, b) {
   if (b !== 0) {
-    const result = a / b;
-    return Math.round(result * 10000000000) / 10000000000;
+    return result = a / b;
   }
   else {
     return "Error: div by 0";
@@ -123,15 +122,26 @@ function divide(a, b) {
 }
 
 function operate(number1, number2, operator) {
+  let result;
   switch (operator) {
     case "+":
-      return add(number1, number2);
+      result = add(number1, number2);
+      break;
     case "-":
-      return subtract(number1, number2);
+      result = subtract(number1, number2);
+      break;
     case "X":
-      return multiply(number1, number2);
+      result = multiply(number1, number2);
+      break;
     case "/":
-      return divide(number1, number2);
+      result = divide(number1, number2);
+      break;
+  }
+  if (result.toString().length >= 12) {
+    return result.toExponential(6);
+  }
+  else {
+    return result;
   }
 }
 
