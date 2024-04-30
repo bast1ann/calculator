@@ -135,7 +135,10 @@ function operate(number1, number2, operator) {
       result = divide(number1, number2);
       break;
   }
-  if (result.toString().length >= 12) {
+  if (result == "Error: div by 0" ) {
+    return result;
+  }
+  else if (result.toString().length >= 12) {
     return result.toExponential(6);
   }
   else {
