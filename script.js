@@ -9,14 +9,21 @@ const numberButtons = document.querySelectorAll("button.number");
 const operatorButtons = document.querySelectorAll("button.operator");
 const equalButton = document.querySelector("button.equal");
 const clearButton = document.querySelector("button.clear");
+const decimalPointButton = document.querySelector("button.decimal-point");
 
 numberButtons.forEach( (button) => button.addEventListener("click", writeDisplay) );
 operatorButtons.forEach( (button) =>  button.addEventListener("click", clickOperator) );
 equalButton.addEventListener("click", clickEqual);
 clearButton.addEventListener("click", clickClear);
+decimalPointButton.addEventListener("click", writeDisplay);
 
 function writeDisplay() {
-  if (display.textContent == "0" || operatorClicked || equalClicked) {
+  if (this.textContent === ".") {
+    if (!display.textContent.includes(".")) {
+      display.textContent += ".";
+    }
+  }
+  else if (display.textContent == "0" || operatorClicked || equalClicked) {
     display.textContent = this.textContent;
     operatorClicked = false;
     equalClicked = false;
