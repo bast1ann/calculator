@@ -138,11 +138,35 @@ function operate(number1, number2, operator) {
   if (result == "Error: div by 0" ) {
     return result;
   }
-  else if (result.toString().length >= 12) {
-    return result.toExponential(6);
+  else if (result.toString().length > 12) {
+    return roundResult(result);
   }
   else {
     return result;
   }
 }
 
+function getLengthInt(decimalNumber) { // returns the integer part length of a decimal number
+  const decimalPointIndex = decimalNumber.indexOf(".");
+  return decimalNumber.slice(0, decimalPointIndex).length;
+}
+
+function roundResult(number) {
+  if (number > 9999999999.9) { //it is bigger than the bigger number with 12 digits
+      return number.toExponential(6);
+    }
+  else { // then it's a decimal number
+    if (number > 1) {
+      const intLength = getLengthInt(number.toString());
+      return number.toFixed(11 - intLength);
+    }
+    else {
+      if (number < 0.0000000009) {
+        return number.toExponential(6);
+      }
+      else {
+        return number.toFixed(10);
+      }
+    }
+  }
+}
